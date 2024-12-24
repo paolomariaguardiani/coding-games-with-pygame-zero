@@ -1,18 +1,20 @@
+TITLE = 'Chase Game!!!'
 import random
+
 WIDTH = 600
 HEIGHT = 600
-
-time = 20
 
 background = Actor("background")
 player = Actor("player")
 # player.pos = 200, 200
 player.x = 200
 player.y = 200
+
 player2 = Actor("alien")
 enemy = Actor("enemy_little")
 coin = Actor("coin", pos=(300,300))
 score = 0
+time = 20
 
 game_over = False
 
@@ -31,10 +33,11 @@ def draw():
     if score == 10:
         screen.draw.text("CONGRATULATIONS!!!", (100, 10), color='green', fontsize=50)
 
-    time_string = str(round(time))
-    screen.draw.text(time_string, (300, 0), color='green', fontsize = 50)
+    # time_string = str(round(time))
+#     screen.draw.text(time_string, (300, 0), color='green', fontsize = 50)
+    screen.draw.text(f"{round(time)}", (300,0), color='green', fontsize = 50)
 
-    if game_over:
+    if game_over:  # aggiunto da me (based on other tutorial)
         screen.fill("pink")
         screen.draw.textbox("GAME OVER", (0, 200, WIDTH - 20, 200), color="black")
 
@@ -83,7 +86,7 @@ def update(delta):
         coin.x = random.randint(0, WIDTH)
         coin.y = random.randint(0, HEIGHT)
         score = score + 1
-        print("Score: ", score)
+        time += 2  # I add extra seconds for playing the game
 
     # moving player2
     if keyboard.d:
