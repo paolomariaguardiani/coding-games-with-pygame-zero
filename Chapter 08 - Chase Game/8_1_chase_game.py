@@ -1,3 +1,5 @@
+import pgzrun
+
 TITLE = 'Chase Game!!!'
 import random
 
@@ -101,3 +103,4 @@ def update(delta):
         game_over = True
 
 
+pgzrun.go()
